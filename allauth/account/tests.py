@@ -4,6 +4,7 @@ import json
 import uuid
 from datetime import timedelta
 
+import django
 from django import forms
 from django.conf import settings
 from django.contrib import messages
@@ -158,12 +159,19 @@ class AccountTests(TestCase):
                 "password2": "janedoe",
             },
         )
-        self.assertFormError(
-            resp,
-            "form",
-            "password2",
-            "You must type the same password each time.",
-        )
+        if django.VERSION >= (4, 1):
+            self.assertFormError(
+                resp.context["form"],
+                "password2",
+                "You must type the same password each time.",
+            )
+        else:
+            self.assertFormError(
+                resp,
+                "form",
+                "password2",
+                "You must type the same password each time.",
+            )
 
     @override_settings(
         ACCOUNT_USERNAME_REQUIRED=True, ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE=True
@@ -598,14 +606,23 @@ class AccountTests(TestCase):
                     "password": ("doe" if is_valid_attempt else "wrong"),
                 },
             )
-            self.assertFormError(
-                resp,
-                "form",
-                None,
-                "Too many failed login attempts. Try again later."
-                if is_locked
-                else "The username and/or password you specified are not correct.",
-            )
+            if django.VERSION >= (4, 1):
+                self.assertFormError(
+                    resp.context["form"],
+                    None,
+                    "Too many failed login attempts. Try again later."
+                    if is_locked
+                    else "The username and/or password you specified are not correct.",
+                )
+            else:
+                self.assertFormError(
+                    resp,
+                    "form",
+                    None,
+                    "Too many failed login attempts. Try again later."
+                    if is_locked
+                    else "The username and/or password you specified are not correct.",
+                )
 
     @override_settings(
         ACCOUNT_AUTHENTICATION_METHOD=app_settings.AuthenticationMethod.EMAIL,
@@ -628,22 +645,36 @@ class AccountTests(TestCase):
         resp = self.client.post(
             reverse("account_login"), {"login": user.email, "password": "bad"}
         )
-        self.assertFormError(
-            resp,
-            "form",
-            None,
-            "The e-mail address and/or password you specified are not correct.",
-        )
+        if django.VERSION >= (4, 1):
+            self.assertFormError(
+                resp.context["form"],
+                None,
+                "The e-mail address and/or password you specified are not correct.",
+            )
+        else:
+            self.assertFormError(
+                resp,
+                "form",
+                None,
+                "The e-mail address and/or password you specified are not correct.",
+            )
 
         resp = self.client.post(
             reverse("account_login"), {"login": user.email, "password": "bad"}
         )
-        self.assertFormError(
-            resp,
-            "form",
-            None,
-            "Too many failed login attempts. Try again later.",
-        )
+        if django.VERSION >= (4, 1):
+            self.assertFormError(
+                resp.context["form"],
+                None,
+                "Too many failed login attempts. Try again later.",
+            )
+        else:
+            self.assertFormError(
+                resp,
+                "form",
+                None,
+                "Too many failed login attempts. Try again later.",
+            )
 
         self.client.post(reverse("account_reset_password"), data={"email": user.email})
 
@@ -904,13 +935,21 @@ class AccountTests(TestCase):
                 "password2": "johndoe",
             },
         )
-        self.assertFormError(resp, "form", None, [])
-        self.assertFormError(
-            resp,
-            "form",
-            "password1",
-            ["This password is too short. It must contain at least 9 characters."],
-        )
+        if django.VERSION >= (4, 1):
+            self.assertFormError(resp.context["form"], None, [])
+            self.assertFormError(
+                resp.context["form"],
+                "password1",
+                ["This password is too short. It must contain at least 9 characters."],
+            )
+        else:
+            self.assertFormError(resp, "form", None, [])
+            self.assertFormError(
+                resp,
+                "form",
+                "password1",
+                ["This password is too short. It must contain at least 9 characters."],
+            )
 
     @override_settings(ACCOUNT_EMAIL_CONFIRMATION_HMAC=True)
     def test_email_confirmation_hmac_falls_back(self):
@@ -1185,6 +1224,15 @@ class EmailFormTests(TestCase):
         )
         self.assertTemplateUsed(resp, "account/messages/email_confirmation_sent.txt")
 
+    def test_verify_unknown_email(self):
+        assert EmailAddress.objects.filter(user=self.user).count() == 2
+        self.client.post(
+            reverse("account_email"),
+            {"action_send": "", "email": "email@unknown.org"},
+        )
+        # This unkown email address must not be implicitly added.
+        assert EmailAddress.objects.filter(user=self.user).count() == 2
+
     @override_settings(ACCOUNT_MAX_EMAIL_ADDRESSES=2)
     def test_add_with_two_limiter(self):
         resp = self.client.post(
@@ -1298,6 +1346,29 @@ class CustomSignupFormTests(TestCase):
 
         form = CustomSignupForm()
         self.assertEqual(list(form.fields.keys()), expected_field_order)
+
+    def test_user_class_attribute(self):
+        from django.contrib.auth import get_user_model
+        from django.db.models.query_utils import DeferredAttribute
+
+        class CustomSignupForm(SignupForm):
+            # ACCOUNT_SIGNUP_FORM_CLASS is only abided by when the
+            # BaseSignupForm definition is loaded the first time on Django
+            # startup. @override_settings() has therefore no effect.
+            pass
+
+        User = get_user_model()
+        data = {
+            "username": "username",
+            "email": "user@example.com",
+            "password1": "very-secret",
+            "password2": "very-secret",
+        }
+        form = CustomSignupForm(data, email_required=True)
+
+        assert isinstance(User.username, DeferredAttribute)
+        form.is_valid()
+        assert isinstance(User.username, DeferredAttribute)
 
 
 class AuthenticationBackendTests(TestCase):
@@ -1571,3 +1642,24 @@ class RequestAjaxTests(TestCase):
         resp = self._send_post_request(HTTP_ACCEPT="application/json")
         self.assertEqual(200, resp.status_code)
         self.assertEqual(settings.LOGIN_REDIRECT_URL, resp.json()["location"])
+
+
+@override_settings(
+    CACHES={
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        },
+    },
+    ACCOUNT_RATE_LIMITS={"reset_password_email": "1/m"},
+)
+class RateLimitTests(TestCase):
+    def test_case_insensitive_password_reset(self):
+        get_user_model().objects.create(email="a@b.com")
+        resp = self.client.post(
+            reverse("account_reset_password"), data={"email": "a@b.com"}
+        )
+        assert resp.status_code == 302
+        resp = self.client.post(
+            reverse("account_reset_password"), data={"email": "A@B.COM"}
+        )
+        assert resp.status_code == 429

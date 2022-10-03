@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 08:41-0600\n"
+"POT-Creation-Date: 2022-06-07 04:23-0500\n"
 "PO-Revision-Date: 2014-08-12 00:29+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/adapter.py:45
+#: account/adapter.py:47
 msgid "Username can not be used. Please use other username."
 msgstr "Δεν μπορεί να χρησιμοποιηθεί αυτό το όνομα χρήστη. Δοκιμάστε άλλο."
 
-#: account/adapter.py:51
+#: account/adapter.py:53
 msgid "Too many failed login attempts. Try again later."
 msgstr "Πολλές αποτυχημένες προσπάθειες σύνδεσης. Προσπαθήστε ξανά αργότερα."
 
-#: account/adapter.py:53
+#: account/adapter.py:55
 msgid "A user is already registered with this e-mail address."
 msgstr "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτό το e-mail."
 
-#: account/adapter.py:300
+#: account/adapter.py:304
 #, python-brace-format
 msgid "Password must be a minimum of {0} characters."
 msgstr "Το συνθηματικό πρέπει να περιέχει τουλάχιστον {0} χαρακτήρες."
@@ -39,11 +39,11 @@ msgstr "Το συνθηματικό πρέπει να περιέχει τουλ�
 msgid "Accounts"
 msgstr "Λογαριασμοί"
 
-#: account/forms.py:59 account/forms.py:413
+#: account/forms.py:59 account/forms.py:416
 msgid "You must type the same password each time."
 msgstr "Πρέπει να δοθεί το ίδιο συνθηματικό κάθε φορά."
 
-#: account/forms.py:92 account/forms.py:381 account/forms.py:498
+#: account/forms.py:92 account/forms.py:381 account/forms.py:501
 msgid "Password"
 msgstr "Συνθηματικό"
 
@@ -63,13 +63,13 @@ msgstr "Η διέυθυνση e-mail ή/και το συνθηματικό πο�
 msgid "The username and/or password you specified are not correct."
 msgstr "Το όνομα χρήστη ή/και το συνθηματικό που δόθηκαν δεν είναι σωστά."
 
-#: account/forms.py:113 account/forms.py:279 account/forms.py:439
-#: account/forms.py:517
+#: account/forms.py:113 account/forms.py:279 account/forms.py:442
+#: account/forms.py:520
 msgid "E-mail address"
 msgstr "Διεύθυνση e-mail"
 
-#: account/forms.py:117 account/forms.py:316 account/forms.py:436
-#: account/forms.py:512
+#: account/forms.py:117 account/forms.py:316 account/forms.py:439
+#: account/forms.py:515
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -109,89 +109,89 @@ msgstr "E-mail (προαιρετικό)"
 msgid "You must type the same email each time."
 msgstr "Πρέπει να δοθεί το ίδιο email κάθε φορά."
 
-#: account/forms.py:384 account/forms.py:499
+#: account/forms.py:385 account/forms.py:502
 msgid "Password (again)"
 msgstr "Συνθηματικό (επιβεβαίωση)"
 
-#: account/forms.py:448
+#: account/forms.py:451
 msgid "This e-mail address is already associated with this account."
 msgstr "Αυτό το e-mail χρησιμοποιείται ήδη από αυτό το λογαριασμό."
 
-#: account/forms.py:451
+#: account/forms.py:454
 msgid "This e-mail address is already associated with another account."
 msgstr "Αυτό το e-mail χρησιμοποιείται ήδη από άλλο λογαριασμό."
 
-#: account/forms.py:453
+#: account/forms.py:456
 #, fuzzy, python-format
 #| msgid "Your account has no verified e-mail address."
 msgid "You cannot add more than %d e-mail addresses."
 msgstr "Δεν έχει επιβεβαιωθεί κανένα e-mail του λογαριασμού σας."
 
-#: account/forms.py:478
+#: account/forms.py:481
 msgid "Current Password"
 msgstr "Τρέχον συνθηματικό"
 
-#: account/forms.py:480 account/forms.py:570
+#: account/forms.py:483 account/forms.py:588
 msgid "New Password"
 msgstr "Νέο συνθηματικό"
 
-#: account/forms.py:481 account/forms.py:571
+#: account/forms.py:484 account/forms.py:589
 msgid "New Password (again)"
 msgstr "Νέο συνθηματικό (επιβεβαίωση)"
 
-#: account/forms.py:489
+#: account/forms.py:492
 msgid "Please type your current password."
 msgstr "Παρακαλώ γράψτε το τρέχον συνθηματικό σας."
 
-#: account/forms.py:529
+#: account/forms.py:532
 msgid "The e-mail address is not assigned to any user account"
 msgstr "Το e-mail δεν χρησιμοποιείται από κανέναν λογαριασμό"
 
-#: account/forms.py:592
+#: account/forms.py:610
 msgid "The password reset token was invalid."
 msgstr "Το κουπόνι επαναφοράς του συνθηματικού δεν ήταν έγκυρο."
 
-#: account/models.py:22
+#: account/models.py:19
 msgid "user"
 msgstr "χρήστης"
 
-#: account/models.py:28 account/models.py:83
+#: account/models.py:25 account/models.py:80
 msgid "e-mail address"
 msgstr "διεύθυνση e-mail"
 
-#: account/models.py:30
+#: account/models.py:27
 msgid "verified"
 msgstr "επαληθευμένο"
 
-#: account/models.py:31
+#: account/models.py:28
 msgid "primary"
 msgstr "πρωτεύον"
 
-#: account/models.py:36
+#: account/models.py:33
 msgid "email address"
 msgstr "διεύθυνση e-mail"
 
-#: account/models.py:37
+#: account/models.py:34
 msgid "email addresses"
 msgstr "διευθύνσεις e-mail"
 
-#: account/models.py:86
+#: account/models.py:83
 msgid "created"
 msgstr "δημιουργήθηκε"
 
-#: account/models.py:87
+#: account/models.py:84
 msgid "sent"
 msgstr "απστάλει"
 
-#: account/models.py:88 socialaccount/models.py:58
+#: account/models.py:85 socialaccount/models.py:59
 msgid "key"
 msgstr "κλειδί"
 
-#: account/models.py:93
+#: account/models.py:90
 msgid "email confirmation"
 msgstr "e-mail επιβεβαίωσης"
 
-#: account/models.py:94
+#: account/models.py:91
 msgid "email confirmations"
 msgstr "e-mail επιβεβαίωσης"
 
@@ -216,91 +216,91 @@ msgstr "Δεν έχει επιβεβαιωθεί κανένα e-mail του λο
 msgid "Social Accounts"
 msgstr "Λογαριασμοί Κοινωνικών Μέσων"
 
-#: socialaccount/models.py:41 socialaccount/models.py:84
+#: socialaccount/models.py:42 socialaccount/models.py:86
 msgid "provider"
 msgstr "πάροχος"
 
-#: socialaccount/models.py:45
+#: socialaccount/models.py:46
 msgid "name"
 msgstr "όνομα"
 
-#: socialaccount/models.py:47
+#: socialaccount/models.py:48
 msgid "client id"
 msgstr "id πελάτη"
 
-#: socialaccount/models.py:49
+#: socialaccount/models.py:50
 msgid "App ID, or consumer key"
 msgstr "App ID ή consumer key(κλειδί καταναλωτή)"
 
-#: socialaccount/models.py:52
+#: socialaccount/models.py:53
 msgid "secret key"
 msgstr "μυστικό κλειδί"
 
-#: socialaccount/models.py:55
+#: socialaccount/models.py:56
 msgid "API secret, client secret, or consumer secret"
 msgstr "API secret, client secret, ή consumer secret"
 
-#: socialaccount/models.py:58
+#: socialaccount/models.py:59
 msgid "Key"
 msgstr "Κλειδί"
 
-#: socialaccount/models.py:74
+#: socialaccount/models.py:76
 msgid "social application"
 msgstr "εφαρμογή κοινωνικών μέσων"
 
-#: socialaccount/models.py:75
+#: socialaccount/models.py:77
 msgid "social applications"
 msgstr "εφαρμογές κοινωνικών μέσων"
 
-#: socialaccount/models.py:105
+#: socialaccount/models.py:107
 msgid "uid"
 msgstr "uid"
 
-#: socialaccount/models.py:107
+#: socialaccount/models.py:109
 msgid "last login"
 msgstr "τελευταία σύνδεση"
 
-#: socialaccount/models.py:108
+#: socialaccount/models.py:110
 msgid "date joined"
 msgstr "ημερομηνία εγγραφής"
 
-#: socialaccount/models.py:109
+#: socialaccount/models.py:111
 msgid "extra data"
 msgstr "έξτρα δεδομένα"
 
-#: socialaccount/models.py:113
+#: socialaccount/models.py:115
 msgid "social account"
 msgstr "λογαριασμός κοινωνικών μέσων"
 
-#: socialaccount/models.py:114
+#: socialaccount/models.py:116
 msgid "social accounts"
 msgstr "λογαριασμοί κοινωνικών μέσων"
 
-#: socialaccount/models.py:139
+#: socialaccount/models.py:143
 msgid "token"
 msgstr "κουπόνι"
 
-#: socialaccount/models.py:140
+#: socialaccount/models.py:144
 msgid "\"oauth_token\" (OAuth1) or access token (OAuth2)"
 msgstr "\"oauth_token\" (OAuth1) ή access token (OAuth2)"
 
-#: socialaccount/models.py:144
+#: socialaccount/models.py:148
 msgid "token secret"
 msgstr "token secret"
 
-#: socialaccount/models.py:145
+#: socialaccount/models.py:149
 msgid "\"oauth_token_secret\" (OAuth1) or refresh token (OAuth2)"
 msgstr "\"oauth_token_secret\" (OAuth1) ή refresh token (OAuth2)"
 
-#: socialaccount/models.py:148
+#: socialaccount/models.py:152
 msgid "expires at"
 msgstr "λήγει στις"
 
-#: socialaccount/models.py:153
+#: socialaccount/models.py:157
 msgid "social application token"
 msgstr "token (κουπόνι) εφαρμογής κοινωνικών μέσων"
 
-#: socialaccount/models.py:154
+#: socialaccount/models.py:158
 msgid "social application tokens"
 msgstr "tokens (κουπόνια) εφαρμογής κοινωνικών μέσων"
 
@@ -309,11 +309,13 @@ msgid "Invalid profile data"
 msgstr "Άκυρα δεδομένα προφίλ"
 
 #: socialaccount/providers/oauth/client.py:85
+#: socialaccount/providers/pocket/client.py:37
 #, python-format
 msgid "Invalid response while obtaining request token from \"%s\"."
 msgstr "Μη-έγκυρη απάντηση κατά την απόκτηση κουπονιού αιτήματος από \"%s\"."
 
 #: socialaccount/providers/oauth/client.py:117
+#: socialaccount/providers/pocket/client.py:78
 #, python-format
 msgid "Invalid response while obtaining access token from \"%s\"."
 msgstr "Μη-έγκυρη απάντηση κατά την απόκτηση κουπονιού πρόσβασης από \"%s\"."
@@ -474,8 +476,35 @@ msgid "In case you forgot, your username is %(username)s."
 msgstr "Σε περίπτωση που ξεχάσατε, το όνομα χρήστη σας είναι %(username)s."
 
 #: templates/account/email/password_reset_key_subject.txt:3
+#: templates/account/email/unknown_account_subject.txt:3
 msgid "Password Reset E-mail"
 msgstr "E-mail επαναφοράς συνθηματικού"
+
+#: templates/account/email/unknown_account_message.txt:4
+#, fuzzy, python-format
+#| msgid ""
+#| "Hello from %(site_name)s!\n"
+#| "\n"
+#| "You're receiving this e-mail because you or someone else has requested a "
+#| "password for your user account.\n"
+#| "It can be safely ignored if you did not request a password reset. Click "
+#| "the link below to reset your password."
+msgid ""
+"You are receiving this e-mail because you or someone else has requested a\n"
+"password for your user account. However, we do not have any record of a "
+"user\n"
+"with email %(email)s in our database.\n"
+"\n"
+"This mail can be safely ignored if you did not request a password reset.\n"
+"\n"
+"If it was you, you can sign up for an account using the link below."
+msgstr ""
+"Χαιρετίσματα από το %(site_name)s!\n"
+"\n"
+"Λαμβάνετε αυτό το e-mail επειδή εσείς ή κάποιος άλλος έχει κάνει αίτηση "
+"συνθηματικού για τον λογαριασμό σας.\n"
+"Αν δεν ζητήσατε επαναφορά συνθηματικού, μπορεί να αγνοηθεί με ασφάλεια. "
+"Πατήστε στον σύνδεσμο που ακολουθεί για να επαναφέρετε το συνθηματικό σας."
 
 #: templates/account/email_confirm.html:6
 #: templates/account/email_confirm.html:10
@@ -505,7 +534,7 @@ msgstr ""
 "<a href=\"%(email_url)s\">κάντε καινούρια αίτηση επιβεβαίωσης e-mail</a>."
 
 #: templates/account/login.html:6 templates/account/login.html:10
-#: templates/account/login.html:43
+#: templates/account/login.html:43 templates/socialaccount/login.html:4
 msgid "Sign In"
 msgstr "Σύνδεση"
 
@@ -629,12 +658,18 @@ msgstr ""
 "επαναφορά του συνθηματικού σας."
 
 #: templates/account/password_reset_done.html:15
+#, fuzzy
+#| msgid ""
+#| "We have sent an e-mail to you for\n"
+#| "verification. Please click on the link inside this e-mail. Please\n"
+#| "contact us if you do not receive it within a few minutes."
 msgid ""
-"We have sent you an e-mail. Please contact us if you do not receive it "
-"within a few minutes."
+"We have sent you an e-mail. If you have not received it please check your "
+"spam folder. Otherwise contact us if you do not receive it in a few minutes."
 msgstr ""
-"Σας έχουμε στείλει ένα e-mail. Παρακαλούμε επικοινωνήστε μαζί μας αν δεν το "
-"έχετε παραλάβει μέσα σε λίγα λεπτά."
+"Σας στείλαμε ένα e-mail για επαλήθευση.\n"
+"Παρακαλούμε ακολουθήστε τον σύνδεσμο που αυτό περιέχει. Παρακαλούμε\n"
+"επικοινωνήστε μαζί μας αν δεν το έχετε παραλάβει μέσα σε λίγα λεπτά."
 
 #: templates/account/password_reset_from_key.html:7
 msgid "Bad Token"
@@ -651,11 +686,10 @@ msgstr ""
 "χρησιμοποιηθεί.  Παρακαλούμε κάντε εκ νέου <a href=\"%(passwd_reset_url)s"
 "\">επαναφορά συνθηματικού</a>."
 
-#: templates/account/password_reset_from_key.html:17
+#: templates/account/password_reset_from_key.html:16
 msgid "change password"
 msgstr "αλλαγή συνθηματικού"
 
-#: templates/account/password_reset_from_key.html:20
 #: templates/account/password_reset_from_key_done.html:8
 msgid "Your password is now changed."
 msgstr "Το συνθηματικό σας έχει αλλάξει."
@@ -708,10 +742,16 @@ msgid "Verify Your E-mail Address"
 msgstr "Επιβεβαιώστε την διεύθυνση e-mail σας"
 
 #: templates/account/verification_sent.html:10
+#, fuzzy
+#| msgid ""
+#| "We have sent an e-mail to you for verification. Follow the link provided "
+#| "to finalize the signup process. Please contact us if you do not receive "
+#| "it within a few minutes."
 msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
-"finalize the signup process. Please contact us if you do not receive it "
-"within a few minutes."
+"finalize the signup process. If you do not see the verification e-mail in "
+"your main inbox, check your spam folder. Please contact us if you do not "
+"receive the verification e-mail within a few minutes."
 msgstr ""
 "Σας στείλαμε ένα e-mail για επαλήθευση. Ακολουθήστε τον σύνδεσμο που λάβατε "
 "γιατην ολοκλήρωση της διαδικασίας εγγραφής. Παρακαλούμε επικοινωνήστε μαζί "
@@ -728,9 +768,16 @@ msgstr ""
 "επαληθεύσετε την ιδιοκτησία της e-mail διεύθυνσης σας. "
 
 #: templates/account/verified_email_required.html:16
+#, fuzzy
+#| msgid ""
+#| "We have sent an e-mail to you for\n"
+#| "verification. Please click on the link inside this e-mail. Please\n"
+#| "contact us if you do not receive it within a few minutes."
 msgid ""
 "We have sent an e-mail to you for\n"
-"verification. Please click on the link inside this e-mail. Please\n"
+"verification. Please click on the link inside that e-mail. If you do not see "
+"the verification e-mail in your main inbox, check your spam folder. "
+"Otherwise\n"
 "contact us if you do not receive it within a few minutes."
 msgstr ""
 "Σας στείλαμε ένα e-mail για επαλήθευση.\n"
@@ -785,27 +832,27 @@ msgstr ""
 msgid "Add a 3rd Party Account"
 msgstr "Προσθήκη εξωτερικού λογαριασμού"
 
-#: templates/socialaccount/login.html:6
+#: templates/socialaccount/login.html:8
 #, python-format
 msgid "Connect %(provider)s"
 msgstr ""
 
-#: templates/socialaccount/login.html:8
+#: templates/socialaccount/login.html:10
 #, python-format
 msgid "You are about to connect a new third party account from %(provider)s."
 msgstr ""
 
-#: templates/socialaccount/login.html:10
+#: templates/socialaccount/login.html:12
 #, python-format
 msgid "Sign In Via %(provider)s"
 msgstr ""
 
-#: templates/socialaccount/login.html:12
+#: templates/socialaccount/login.html:14
 #, python-format
 msgid "You are about to sign in using a third party account from %(provider)s."
 msgstr ""
 
-#: templates/socialaccount/login.html:17
+#: templates/socialaccount/login.html:19
 msgid "Continue"
 msgstr ""
 
@@ -848,6 +895,13 @@ msgstr ""
 "Πρόκειται να χρησιμοποιήσετε τον %(provider_name)s λογαριασμό σας για να "
 "συνδεθείτε στην σελίδα\n"
 "%(site_name)s. Ως τελικό βήμα, παρακαλούμε συμπληρώστε την παρακάτω φόρμα:"
+
+#~ msgid ""
+#~ "We have sent you an e-mail. Please contact us if you do not receive it "
+#~ "within a few minutes."
+#~ msgstr ""
+#~ "Σας έχουμε στείλει ένα e-mail. Παρακαλούμε επικοινωνήστε μαζί μας αν δεν "
+#~ "το έχετε παραλάβει μέσα σε λίγα λεπτά."
 
 #~ msgid "Account"
 #~ msgstr "Λογαριασμός"

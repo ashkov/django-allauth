@@ -3,6 +3,7 @@ import random
 import warnings
 from urllib.parse import parse_qs, urlparse
 
+import django
 from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.messages.middleware import MessageMiddleware
@@ -586,14 +587,23 @@ class SocialAccountTests(TestCase):
         resp = self.client.post(
             reverse("socialaccount_signup"), data={"email": "me@example.com"}
         )
-        self.assertFormError(
-            resp,
-            "form",
-            "email",
-            "An account already exists with this e-mail address."
-            " Please sign in to that account first, then connect"
-            " your Google account.",
-        )
+        if django.VERSION >= (4, 1):
+            self.assertFormError(
+                resp.context["form"],
+                "email",
+                "An account already exists with this e-mail address."
+                " Please sign in to that account first, then connect"
+                " your Google account.",
+            )
+        else:
+            self.assertFormError(
+                resp,
+                "form",
+                "email",
+                "An account already exists with this e-mail address."
+                " Please sign in to that account first, then connect"
+                " your Google account.",
+            )
 
     @override_settings(
         ACCOUNT_EMAIL_REQUIRED=True,
@@ -633,3 +643,21 @@ class SocialAccountTests(TestCase):
 
         resp = self.client.get(reverse("socialaccount_signup"))
         self.assertRedirects(resp, reverse("account_login"))
+
+    def test_social_account_str_default(self):
+        User = get_user_model()
+        user = User(username="test")
+        sa = SocialAccount(user=user)
+        self.assertEqual("test", str(sa))
+
+    def socialaccount_str_custom_formatter(socialaccount):
+        return "A custom str builder for {}".format(socialaccount.user)
+
+    @override_settings(
+        SOCIALACCOUNT_SOCIALACCOUNT_STR=socialaccount_str_custom_formatter
+    )
+    def test_social_account_str_customized(self):
+        User = get_user_model()
+        user = User(username="test")
+        sa = SocialAccount(user=user)
+        self.assertEqual("A custom str builder for test", str(sa))
