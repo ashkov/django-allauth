@@ -12,7 +12,7 @@ from .provider import IvranProvider
 class IvranAuth2Adapter(OAuth2Adapter):
     provider_id = IvranProvider.id
     access_token_url = "http://localhost:8080/client_credentials.php/access_token"
-    authorize_url = "http://localhost:8080/auth_code.php/authorize"
+    authorize_url = "http://localhost:8080/oauth/authorize"
     profile_url = "https://login.ivran.ru/info"
 
     def complete_login(self, request, app, token, **kwargs):
